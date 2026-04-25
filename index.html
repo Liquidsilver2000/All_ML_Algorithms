@@ -1,0 +1,2006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Every ML Algorithm and When to Use It</title>
+    <meta name="description" content="A visual guide to choosing the right machine learning model based on your data and business goal.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <i class="fas fa-brain"></i>
+                <span>ML Guide</span>
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#depends-on" class="nav-link">3 Key Factors</a></li>
+                <li><a href="#decision-grid" class="nav-link">Decision Grid</a></li>
+                <li><a href="#data-types" class="nav-link">Data Types</a></li>
+                <li><a href="#algorithm-cards" class="nav-link">Algorithms</a></li>
+                <li><a href="#decision-tree" class="nav-link">Decision Tree</a></li>
+                <li><a href="#featured" class="nav-link">Featured</a></li>
+                <li><a href="#use-cases" class="nav-link">Use Cases</a></li>
+                <li><a href="#comparison" class="nav-link">Comparison</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Side Navigation Dots -->
+    <div class="side-nav" id="sideNav">
+        <a href="#hero" class="side-dot active" data-tooltip="Home"></a>
+        <a href="#depends-on" class="side-dot" data-tooltip="3 Key Factors"></a>
+        <a href="#decision-grid" class="side-dot" data-tooltip="Decision Grid"></a>
+        <a href="#data-types" class="side-dot" data-tooltip="Data Types"></a>
+        <a href="#algorithm-cards" class="side-dot" data-tooltip="Algorithms"></a>
+        <a href="#decision-tree" class="side-dot" data-tooltip="Decision Tree"></a>
+        <a href="#featured" class="side-dot" data-tooltip="Featured"></a>
+        <a href="#use-cases" class="side-dot" data-tooltip="Use Cases"></a>
+        <a href="#comparison" class="side-dot" data-tooltip="Comparison"></a>
+        <a href="#cta" class="side-dot" data-tooltip="Summary"></a>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas" class="particle-canvas"></canvas>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Section 1: Hero -->
+        <section class="hero" id="hero">
+            <div class="hero-bg">
+                <img src="assets/hero-bg.png" alt="" loading="eager">
+                <div class="hero-overlay"></div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-robot"></i>
+                    <span>Interactive ML Reference Guide</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line">Every ML Algorithm</span>
+                    <span class="title-line accent">and When to Use It</span>
+                </h1>
+                <p class="hero-subtitle">A visual guide to choosing the right machine learning model based on your data and business goal.</p>
+                <p class="hero-intro">Different algorithms work best for different types of problems. Whether you're working with structured tables, raw text, images, audio, behavior logs, time series, or graph data — there's a perfect model for every task. This guide helps you navigate the ML landscape with confidence.</p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="16">0</span>
+                        <span class="stat-label">Algorithms</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="8">0</span>
+                        <span class="stat-label">Data Types</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="12">0</span>
+                        <span class="stat-label">Use Cases</span>
+                    </div>
+                </div>
+                <div class="hero-cta">
+                    <a href="#algorithm-cards" class="btn btn-primary">
+                        <i class="fas fa-microchip"></i>
+                        Explore Algorithms
+                    </a>
+                    <a href="#decision-tree" class="btn btn-secondary">
+                        <i class="fas fa-sitemap"></i>
+                        See Decision Flow
+                    </a>
+                </div>
+            </div>
+            <div class="hero-floating-elements">
+                <div class="float-el" data-speed="0.5"><i class="fas fa-chart-line"></i></div>
+                <div class="float-el" data-speed="0.8"><i class="fas fa-network-wired"></i></div>
+                <div class="float-el" data-speed="0.3"><i class="fas fa-database"></i></div>
+                <div class="float-el" data-speed="0.6"><i class="fas fa-brain"></i></div>
+                <div class="float-el" data-speed="0.4"><i class="fas fa-code-branch"></i></div>
+                <div class="float-el" data-speed="0.7"><i class="fas fa-project-diagram"></i></div>
+            </div>
+            <div class="scroll-indicator">
+                <span>Scroll to explore</span>
+                <div class="scroll-arrow">
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: What to Choose Depends on 3 Things -->
+        <section class="section depends-on" id="depends-on">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Foundation</span>
+                    <h2 class="section-title">What to Choose Depends on <span class="gradient-text">3 Things</span></h2>
+                    <p class="section-desc">Selecting the right algorithm isn't magic — it's a decision based on three key factors that every data scientist considers.</p>
+                </div>
+                <div class="cards-grid three-cards">
+                    <div class="glass-card factor-card" data-reveal>
+                        <div class="card-icon" style="--icon-color: #06B6D4;">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3>Data Type</h3>
+                        <p>The structure and format of your input data determines which algorithms can process it effectively.</p>
+                        <ul class="factor-list">
+                            <li><i class="fas fa-table"></i> Structured tables & CSV</li>
+                            <li><i class="fas fa-font"></i> Text & documents</li>
+                            <li><i class="fas fa-image"></i> Images & photos</li>
+                            <li><i class="fas fa-wave-square"></i> Audio & speech</li>
+                            <li><i class="fas fa-mouse-pointer"></i> Interaction & behavior</li>
+                            <li><i class="fas fa-project-diagram"></i> Graph & network</li>
+                            <li><i class="fas fa-clock"></i> Time series</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card factor-card" data-reveal>
+                        <div class="card-icon" style="--icon-color: #8B5CF6;">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h3>Goal</h3>
+                        <p>What you want to achieve with your model — the prediction task or business objective.</p>
+                        <ul class="factor-list">
+                            <li><i class="fas fa-chart-line"></i> Predict values</li>
+                            <li><i class="fas fa-tags"></i> Classify categories</li>
+                            <li><i class="fas fa-object-group"></i> Cluster & group</li>
+                            <li><i class="fas fa-exclamation-triangle"></i> Detect anomalies</li>
+                            <li><i class="fas fa-magic"></i> Generate content</li>
+                            <li><i class="fas fa-thumbs-up"></i> Recommend items</li>
+                            <li><i class="fas fa-link"></i> Understand relationships</li>
+                        </ul>
+                    </div>
+                    <div class="glass-card factor-card" data-reveal>
+                        <div class="card-icon" style="--icon-color: #10B981;">
+                            <i class="fas fa-briefcase"></i>
+                        </div>
+                        <h3>Business Context</h3>
+                        <p>Real-world constraints that affect which model makes sense in production.</p>
+                        <ul class="factor-list">
+                            <li><i class="fas fa-crosshairs"></i> Accuracy requirements</li>
+                            <li><i class="fas fa-eye"></i> Explainability needs</li>
+                            <li><i class="fas fa-tachometer-alt"></i> Speed & latency</li>
+                            <li><i class="fas fa-expand-arrows-alt"></i> Scale & volume</li>
+                            <li><i class="fas fa-dollar-sign"></i> Cost & budget</li>
+                            <li><i class="fas fa-database"></i> Training data size</li>
+                            <li><i class="fas fa-wrench"></i> Maintenance ease</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Algorithm Decision Grid -->
+        <section class="section decision-grid" id="decision-grid">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Quick Reference</span>
+                    <h2 class="section-title">Algorithm <span class="gradient-text">Decision Grid</span></h2>
+                    <p class="section-desc">Map your data type and goal to the best algorithm. Hover over each card to see details.</p>
+                </div>
+                
+                <!-- Filter Buttons -->
+                <div class="filter-bar">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="structured">Structured</button>
+                    <button class="filter-btn" data-filter="timeseries">Time Series</button>
+                    <button class="filter-btn" data-filter="text">Text / NLP</button>
+                    <button class="filter-btn" data-filter="image">Images</button>
+                    <button class="filter-btn" data-filter="video">Video</button>
+                    <button class="filter-btn" data-filter="audio">Audio</button>
+                    <button class="filter-btn" data-filter="recommendation">Recommendation</button>
+                    <button class="filter-btn" data-filter="graph">Graph</button>
+                </div>
+
+                <div class="decision-grid-container">
+                    <!-- Structured Data -->
+                    <div class="grid-category" data-category="structured" data-reveal>
+                        <div class="category-header">
+                            <span class="category-tag" style="--tag-color: #06B6D4;"><i class="fas fa-table"></i> Structured Data</span>
+                        </div>
+                        <div class="grid-cards">
+                            <div class="algo-mini-card">
+                                <div class="mini-card-header">
+                                    <span class="mini-goal"><i class="fas fa-chart-line"></i> Predict a number</span>
+                                    <h4>Linear Regression</h4>
+                                </div>
+                                <p class="mini-use">Sales forecasting, pricing, demand prediction</p>
+                            </div>
+                            <div class="algo-mini-card">
+                                <div class="mini-card-header">
+                                    <span class="mini-goal"><i class="fas fa-tags"></i> Classify categories</span>
+                                    <h4>XGBoost / LightGBM</h4>
+                                </div>
+                                <p class="mini-use">Churn, fraud, credit scoring</p>
+                            </div>
+                            <div class="algo-mini-card">
+                                <div class="mini-card-header">
+                                    <span class="mini-goal"><i class="fas fa-object-group"></i> Find hidden groups</span>
+                                    <h4>K-Means</h4>
+                                </div>
+                                <p class="mini-use">Customer segmentation, grouping</p>
+                            </div>
+                            <div class="algo-mini-card">
+                                <div class="mini-card-header">
+                                    <span class="mini-goal"><i class="fas fa-exclamation-triangle"></i> Detect outliers</span>
+                                    <h4>Isolation Forest</h4>
+                                </div>
+                                <p class="mini-use">Fraud, anomalies, intrusions</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Time Series -->
+                    <div class="grid-category" data-category="timeseries" data-reveal>
+                        <div class="category-header">
+                            <span class="category-tag" style="--tag-color: #F59E0B;"><i class="fas fa-clock"></i> Time Series</span>
+                        </div>
+                        <div class="grid-cards">
+                            <div class="algo-mini-card">
+                                <div class="mini-card-header">
+                                    <span class="mini-goal"><i class="fas fa-chart-area"></i> Forecast over time</span>
+                                    <h4>LSTM / Prophet / TimesGPT</h4>
+                                </div>
+                                <p class="mini-use">Demand forecasting, trends, seasonality</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Text / NLP -->
+                    <div class="grid-category" data-category="text" data-reveal>
+                        <div class="category-header">
+                            <span class="category-tag" style="--tag-color: #10B981;"><i class="fas fa-font"></i> Text / NLP</span>
+                        </div>
+                        <div class="grid-cards">
+                            <div class="algo-mini-card">
+                                <div class="mini-card-header">
+                                    <span class="mini-goal"><i class="fas fa-magic"></i> Generate text</span>
+                                    <h4>GPT / Llama / Gemini</h4>
+                                </div>
+                                <p class="mini-use">Chatbots, writing, summarization</p>
+                            </div>
+                            <div class="algo-mini-card">
+                                <div class="mini-card-header">
+                                    <span class="mini-goal"><i class="fas fa-tags"></i> Classify text</span>
+                                    <h4>BERT / RoBERTa</h4>
+                                </div>
+                                <p class="mini-use">Sentiment, spam, intent</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Images -->
+                    <div class="grid-category" data-category="image" data-reveal>
+                        <div class="category-header">
+                            <span class="category-tag" style="--tag-color: #F43F5E;"><i class="fas fa-image"></i> Images</span>
+                        </div>
+                        <div class="grid-cards">
+                            <div class="algo-mini-card">
+                                <div class="mini-card-header">
+                                    <span class="mini-goal"><i class="fas fa-eye"></i> Classify images</span>
+                                    <h4>Vision Transformer</h4>
+                                </div>
+                                <p class="mini-use">Medical imaging, product recognition</p>
+                            </div>
+                            <div class="algo-mini-card">
+                                <div class="mini-card-header">
+                                    <span class="mini-goal"><i class="fas fa-paint-brush"></i> Generate images</span>
+                                    <h4>Diffusion Model</h4>
+                                </div>
+                                <p class="mini-use">Art generation, creative design</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Video -->
+                    <div class="grid-category" data-category="video" data-reveal>
+                        <div class="category-header">
+                            <span class="category-tag" style="--tag-color: #8B5CF6;"><i class="fas fa-video"></i> Video</span>
+                        </div>
+                        <div class="grid-cards">
+                            <div class="algo-mini-card">
+                                <div class="mini-card-header">
+                                    <span class="mini-goal"><i class="fas fa-film"></i> Understand video</span>
+                                    <h4>Video Transformer</h4>
+                                </div>
+                                <p class="mini-use">Action recognition, surveillance</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Audio -->
+                    <div class="grid-category" data-category="audio" data-reveal>
+                        <div class="category-header">
+                            <span class="category-tag" style="--tag-color: #F97316;"><i class="fas fa-microphone"></i> Audio / Speech</span>
+                        </div>
+                        <div class="grid-cards">
+                            <div class="algo-mini-card">
+                                <div class="mini-card-header">
+                                    <span class="mini-goal"><i class="fas fa-wave-square"></i> Speech & audio</span>
+                                    <h4>Whisper / wav2vec</h4>
+                                </div>
+                                <p class="mini-use">Transcription, voice AI</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recommendation -->
+                    <div class="grid-category" data-category="recommendation" data-reveal>
+                        <div class="category-header">
+                            <span class="category-tag" style="--tag-color: #6366F1;"><i class="fas fa-thumbs-up"></i> Behavior / Interaction</span>
+                        </div>
+                        <div class="grid-cards">
+                            <div class="algo-mini-card">
+                                <div class="mini-card-header">
+                                    <span class="mini-goal"><i class="fas fa-star"></i> Recommend items</span>
+                                    <h4>Collaborative Filtering / Two-Tower</h4>
+                                </div>
+                                <p class="mini-use">E-commerce, streaming, suggestions</p>
+                            </div>
+                            <div class="algo-mini-card">
+                                <div class="mini-card-header">
+                                    <span class="mini-goal"><i class="fas fa-chess"></i> Optimize decisions</span>
+                                    <h4>Reinforcement Learning / PPO</h4>
+                                </div>
+                                <p class="mini-use">Robotics, pricing, game agents</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Graph -->
+                    <div class="grid-category" data-category="graph" data-reveal>
+                        <div class="category-header">
+                            <span class="category-tag" style="--tag-color: #14B8A6;"><i class="fas fa-project-diagram"></i> Graph / Relational</span>
+                        </div>
+                        <div class="grid-cards">
+                            <div class="algo-mini-card">
+                                <div class="mini-card-header">
+                                    <span class="mini-goal"><i class="fas fa-link"></i> Understand relationships</span>
+                                    <h4>Graph Neural Network</h4>
+                                </div>
+                                <p class="mini-use">Fraud rings, social networks, supply chains</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Data Type Based Algorithm Showcase -->
+        <section class="section data-types" id="data-types">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Deep Dive</span>
+                    <h2 class="section-title">Algorithms by <span class="gradient-text">Data Type</span></h2>
+                    <p class="section-desc">Explore the best algorithms for each type of data, with explanations and real-world examples.</p>
+                </div>
+
+                <!-- Structured Data -->
+                <div class="data-type-section" data-reveal>
+                    <div class="data-type-header" style="--type-color: #06B6D4;">
+                        <div class="type-icon"><i class="fas fa-table"></i></div>
+                        <div class="type-info">
+                            <h3>Structured Data</h3>
+                            <p>Organized data in rows and columns — spreadsheets, databases, CSV files, numeric features</p>
+                            <span class="type-tag">Tables · CSV · Numeric · SQL</span>
+                        </div>
+                    </div>
+                    <div class="algo-showcase-grid">
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-chart-line"></i> Linear Regression</h4>
+                            <p class="showcase-goal">Predict continuous values</p>
+                            <p class="showcase-example">Predict sales, prices, scores</p>
+                        </div>
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-bolt"></i> XGBoost</h4>
+                            <p class="showcase-goal">Classify & regress on tables</p>
+                            <p class="showcase-example">Fraud, churn, credit scoring</p>
+                        </div>
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-fire"></i> LightGBM</h4>
+                            <p class="showcase-goal">Fast gradient boosting</p>
+                            <p class="showcase-example">Large dataset classification</p>
+                        </div>
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-object-group"></i> K-Means</h4>
+                            <p class="showcase-goal">Cluster similar data points</p>
+                            <p class="showcase-example">Customer segmentation</p>
+                        </div>
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-shield-alt"></i> Isolation Forest</h4>
+                            <p class="showcase-goal">Detect anomalies & outliers</p>
+                            <p class="showcase-example">Fraud, network intrusions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Time Series -->
+                <div class="data-type-section" data-reveal>
+                    <div class="data-type-header" style="--type-color: #F59E0B;">
+                        <div class="type-icon"><i class="fas fa-clock"></i></div>
+                        <div class="type-info">
+                            <h3>Time Series / Sequential Data</h3>
+                            <p>Data ordered in time — stock prices, sensor readings, traffic, demand patterns</p>
+                            <span class="type-tag">Temporal · Sequential · Seasonal</span>
+                        </div>
+                    </div>
+                    <div class="algo-showcase-grid">
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-memory"></i> LSTM</h4>
+                            <p class="showcase-goal">Capture long-term patterns</p>
+                            <p class="showcase-example">Forecasting, sensor streams</p>
+                        </div>
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-calendar-alt"></i> Prophet</h4>
+                            <p class="showcase-goal">Business forecasting</p>
+                            <p class="showcase-example">Sales, traffic, seasonality</p>
+                        </div>
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-brain"></i> TimesGPT</h4>
+                            <p class="showcase-goal">Foundation model forecasting</p>
+                            <p class="showcase-example">Advanced time-series tasks</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text / NLP -->
+                <div class="data-type-section" data-reveal>
+                    <div class="data-type-header" style="--type-color: #10B981;">
+                        <div class="type-icon"><i class="fas fa-font"></i></div>
+                        <div class="type-info">
+                            <h3>Text / NLP</h3>
+                            <p>Unstructured text data — documents, emails, social media, reviews, articles</p>
+                            <span class="type-tag">Documents · Reviews · Chat · Articles</span>
+                        </div>
+                    </div>
+                    <div class="algo-showcase-grid">
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-robot"></i> GPT / Llama / Gemini</h4>
+                            <p class="showcase-goal">Generate & reason with text</p>
+                            <p class="showcase-example">Chatbots, writing, Q&A</p>
+                        </div>
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-search"></i> BERT / RoBERTa</h4>
+                            <p class="showcase-goal">Classify & understand text</p>
+                            <p class="showcase-example">Sentiment, spam, intent</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Images -->
+                <div class="data-type-section" data-reveal>
+                    <div class="data-type-header" style="--type-color: #F43F5E;">
+                        <div class="type-icon"><i class="fas fa-image"></i></div>
+                        <div class="type-info">
+                            <h3>Images / Computer Vision</h3>
+                            <p>Visual data — photographs, medical scans, product images, surveillance</p>
+                            <span class="type-tag">Photos · Scans · Products · Art</span>
+                        </div>
+                    </div>
+                    <div class="algo-showcase-grid">
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-eye"></i> Vision Transformer</h4>
+                            <p class="showcase-goal">Classify & understand images</p>
+                            <p class="showcase-example">Medical imaging, recognition</p>
+                        </div>
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-paint-brush"></i> Diffusion Model</h4>
+                            <p class="showcase-goal">Generate realistic images</p>
+                            <p class="showcase-example">Art, design, synthetic data</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video -->
+                <div class="data-type-section" data-reveal>
+                    <div class="data-type-header" style="--type-color: #8B5CF6;">
+                        <div class="type-icon"><i class="fas fa-video"></i></div>
+                        <div class="type-info">
+                            <h3>Video AI</h3>
+                            <p>Moving visual data — surveillance footage, user-generated video, action clips</p>
+                            <span class="type-tag">Footage · Clips · Streams · Surveillance</span>
+                        </div>
+                    </div>
+                    <div class="algo-showcase-grid">
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-film"></i> Video Transformer</h4>
+                            <p class="showcase-goal">Understand video content</p>
+                            <p class="showcase-example">Action recognition, events</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Audio -->
+                <div class="data-type-section" data-reveal>
+                    <div class="data-type-header" style="--type-color: #F97316;">
+                        <div class="type-icon"><i class="fas fa-microphone"></i></div>
+                        <div class="type-info">
+                            <h3>Audio / Speech AI</h3>
+                            <p>Sound data — voice recordings, music, call center audio, podcasts</p>
+                            <span class="type-tag">Voice · Music · Calls · Podcasts</span>
+                        </div>
+                    </div>
+                    <div class="algo-showcase-grid">
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-headphones"></i> Whisper / wav2vec</h4>
+                            <p class="showcase-goal">Speech recognition & audio understanding</p>
+                            <p class="showcase-example">Transcription, voice AI</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recommendation -->
+                <div class="data-type-section" data-reveal>
+                    <div class="data-type-header" style="--type-color: #6366F1;">
+                        <div class="type-icon"><i class="fas fa-thumbs-up"></i></div>
+                        <div class="type-info">
+                            <h3>Recommendation / Behavior Modeling</h3>
+                            <p>User interaction data — clicks, purchases, ratings, browsing history</p>
+                            <span class="type-tag">Clicks · Purchases · Ratings · Behavior</span>
+                        </div>
+                    </div>
+                    <div class="algo-showcase-grid">
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-star"></i> Collaborative Filtering</h4>
+                            <p class="showcase-goal">Recommend based on similar users</p>
+                            <p class="showcase-example">E-commerce, streaming</p>
+                        </div>
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-columns"></i> Two-Tower Model</h4>
+                            <p class="showcase-goal">Large-scale retrieval & ranking</p>
+                            <p class="showcase-example">Search, recommendations</p>
+                        </div>
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-chess"></i> Reinforcement Learning / PPO</h4>
+                            <p class="showcase-goal">Learn from rewards & interaction</p>
+                            <p class="showcase-example">Pricing, robotics, games</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Graph -->
+                <div class="data-type-section" data-reveal>
+                    <div class="data-type-header" style="--type-color: #14B8A6;">
+                        <div class="type-icon"><i class="fas fa-project-diagram"></i></div>
+                        <div class="type-info">
+                            <h3>Graph / Relationship Learning</h3>
+                            <p>Connected data — social networks, supply chains, molecules, fraud rings</p>
+                            <span class="type-tag">Networks · Connections · Relations</span>
+                        </div>
+                    </div>
+                    <div class="algo-showcase-grid">
+                        <div class="algo-showcase-card">
+                            <h4><i class="fas fa-link"></i> Graph Neural Network</h4>
+                            <p class="showcase-goal">Model relationships & connections</p>
+                            <p class="showcase-example">Fraud rings, social nets</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Interactive Algorithm Cards -->
+        <section class="section algorithm-cards" id="algorithm-cards">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Algorithm Library</span>
+                    <h2 class="section-title">Interactive <span class="gradient-text">Algorithm Cards</span></h2>
+                    <p class="section-desc">Click any card to expand and see detailed information about each algorithm.</p>
+                </div>
+
+                <!-- Search & Filter -->
+                <div class="search-filter-bar">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="algoSearch" placeholder="Search algorithms...">
+                    </div>
+                    <div class="goal-filters">
+                        <button class="goal-filter-btn active" data-goal="all">All</button>
+                        <button class="goal-filter-btn" data-goal="predict">Predict</button>
+                        <button class="goal-filter-btn" data-goal="classify">Classify</button>
+                        <button class="goal-filter-btn" data-goal="cluster">Cluster</button>
+                        <button class="goal-filter-btn" data-goal="detect">Detect</button>
+                        <button class="goal-filter-btn" data-goal="generate">Generate</button>
+                        <button class="goal-filter-btn" data-goal="recommend">Recommend</button>
+                        <button class="goal-filter-btn" data-goal="optimize">Optimize</button>
+                    </div>
+                </div>
+
+                <div class="algorithm-grid" id="algorithmGrid">
+                    <!-- Card 1: Linear Regression -->
+                    <div class="algo-detail-card" data-name="linear regression" data-goal="predict" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #06B6D4;"><i class="fas fa-chart-line"></i></div>
+                            <div class="algo-card-title">
+                                <h3>Linear Regression</h3>
+                                <span class="algo-card-tag">Structured Data</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Predicting continuous numeric values</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Numeric tables, CSV, structured features</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Sales prediction, pricing models, demand forecasting, score prediction</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Simple, fast, interpretable, works well with linear relationships</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">Struggles with nonlinear complexity, assumes linear relationship</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">When relationships are highly nonlinear or interactions are complex</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: XGBoost / LightGBM -->
+                    <div class="algo-detail-card" data-name="xgboost lightgbm gradient boosting" data-goal="classify predict" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #06B6D4;"><i class="fas fa-bolt"></i></div>
+                            <div class="algo-card-title">
+                                <h3>XGBoost / LightGBM</h3>
+                                <span class="algo-card-tag">Structured Data</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Structured/tabular classification and regression</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Tabular data, numeric & categorical features</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Churn prediction, fraud detection, credit scoring, ranking</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Powerful, accurate, handles nonlinear relationships, feature importance</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">Less interpretable than linear models, can overfit</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">When model explainability is critical and simple models suffice</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: K-Means -->
+                    <div class="algo-detail-card" data-name="k-means clustering" data-goal="cluster" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #06B6D4;"><i class="fas fa-object-group"></i></div>
+                            <div class="algo-card-title">
+                                <h3>K-Means</h3>
+                                <span class="algo-card-tag">Structured Data</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Clustering similar observations into groups</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Numeric features, vector representations</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Customer segmentation, behavior grouping, data preprocessing</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Simple, fast, scales to large datasets, easy to implement</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">Requires choosing K, assumes spherical clusters, sensitive to outliers</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">When cluster shapes are irregular or cluster count is unknown</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4: Isolation Forest -->
+                    <div class="algo-detail-card" data-name="isolation forest anomaly" data-goal="detect" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #06B6D4;"><i class="fas fa-shield-alt"></i></div>
+                            <div class="algo-card-title">
+                                <h3>Isolation Forest</h3>
+                                <span class="algo-card-tag">Structured Data</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Anomaly and outlier detection</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Tabular numeric data, feature vectors</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Fraud detection, unusual transactions, network intrusions</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Efficient for outlier detection, low memory usage, fast training</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">May be sensitive to noisy data, struggles with high-dimensional data</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">When anomalies are subtle or data has complex feature interactions</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5: LSTM -->
+                    <div class="algo-detail-card" data-name="lstm long short term memory" data-goal="predict" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #F59E0B;"><i class="fas fa-memory"></i></div>
+                            <div class="algo-card-title">
+                                <h3>LSTM</h3>
+                                <span class="algo-card-tag">Time Series</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Sequential patterns over time</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Sequential data, time-ordered features</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Time-series forecasting, sensor streams, long-term sequential dependence</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Captures temporal dependencies, handles long sequences well</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">More complex to train, slower than simpler models</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">For simple forecasting where ARIMA or Prophet would suffice</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6: Prophet -->
+                    <div class="algo-detail-card" data-name="prophet forecasting" data-goal="predict" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #F59E0B;"><i class="fas fa-calendar-alt"></i></div>
+                            <div class="algo-card-title">
+                                <h3>Prophet</h3>
+                                <span class="algo-card-tag">Time Series</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Business time-series forecasting</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Daily/weekly time series with seasonality</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Sales forecasting, website traffic, daily/weekly seasonality</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Interpretable, easy to use, handles missing data, seasonality</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">May underperform for highly complex sequences</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">When there are complex nonlinear temporal patterns</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 7: TimesGPT -->
+                    <div class="algo-detail-card" data-name="timesgpt time series foundation" data-goal="predict" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #F59E0B;"><i class="fas fa-brain"></i></div>
+                            <div class="algo-card-title">
+                                <h3>TimesGPT</h3>
+                                <span class="algo-card-tag">Time Series</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Foundation-model style time-series forecasting</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Time-series data, various frequencies</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Advanced time-series forecasting across domains</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Powerful on time-based data, pre-trained capabilities</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">Depends on model availability and scale, may need fine-tuning</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">When simple statistical methods work or compute is limited</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 8: GPT / Llama / Gemini -->
+                    <div class="algo-detail-card" data-name="gpt llama gemini llm" data-goal="generate classify" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #10B981;"><i class="fas fa-robot"></i></div>
+                            <div class="algo-card-title">
+                                <h3>GPT / Llama / Gemini</h3>
+                                <span class="algo-card-tag">Text / NLP</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Text generation, reasoning, summarization, conversational AI</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Text, documents, prompts, conversations</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Chatbots, content writing, summarization, Q&A systems</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Flexible, general-purpose language understanding, few-shot learning</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">Costly to run, can hallucinate, needs guardrails and monitoring</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">When deterministic, low-latency output is needed on a budget</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 9: BERT / RoBERTa -->
+                    <div class="algo-detail-card" data-name="bert roberta text classification" data-goal="classify" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #10B981;"><i class="fas fa-search"></i></div>
+                            <div class="algo-card-title">
+                                <h3>BERT / RoBERTa</h3>
+                                <span class="algo-card-tag">Text / NLP</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Text classification and language understanding</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Text documents, sentences, paragraphs</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Sentiment analysis, spam detection, intent classification, NER</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Strong contextual understanding, transfer learning, fast inference</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">Not primarily for long-form generation, fixed input length</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">When you need to generate long text or creative writing</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 10: Vision Transformer -->
+                    <div class="algo-detail-card" data-name="vision transformer vit" data-goal="classify" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #F43F5E;"><i class="fas fa-eye"></i></div>
+                            <div class="algo-card-title">
+                                <h3>Vision Transformer</h3>
+                                <span class="algo-card-tag">Computer Vision</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Image classification and visual understanding</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Images, photos, visual data</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Medical imaging, product classification, object recognition</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Modern and high-performing, captures global image context</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">Often needs large data, computationally intensive</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">With small image datasets or limited compute resources</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 11: Diffusion Model -->
+                    <div class="algo-detail-card" data-name="diffusion model image generation" data-goal="generate" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #F43F5E;"><i class="fas fa-paint-brush"></i></div>
+                            <div class="algo-card-title">
+                                <h3>Diffusion Model</h3>
+                                <span class="algo-card-tag">Computer Vision</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> High-quality image generation</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Text prompts, noise vectors, conditioning inputs</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Art generation, creative design, synthetic image creation</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">High-quality image synthesis, diverse outputs, controllable</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">Computationally expensive, slow inference, needs powerful GPUs</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">When real-time generation is needed or compute budget is limited</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 12: Video Transformer -->
+                    <div class="algo-detail-card" data-name="video transformer" data-goal="classify" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #8B5CF6;"><i class="fas fa-film"></i></div>
+                            <div class="algo-card-title">
+                                <h3>Video Transformer</h3>
+                                <span class="algo-card-tag">Video AI</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Video understanding and analysis</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Video clips, frame sequences</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Action recognition, surveillance, event detection</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Understands temporal visual patterns, state-of-the-art accuracy</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">Computationally heavy, needs lots of video data</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">For simple video tasks where CNN-based methods suffice</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 13: Whisper / wav2vec -->
+                    <div class="algo-detail-card" data-name="whisper wav2vec speech audio" data-goal="classify" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #F97316;"><i class="fas fa-headphones"></i></div>
+                            <div class="algo-card-title">
+                                <h3>Whisper / wav2vec</h3>
+                                <span class="algo-card-tag">Audio AI</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Speech recognition and audio understanding</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Audio files, speech recordings</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Transcription, speech analytics, voice AI assistants</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Powerful for audio tasks, multilingual support, robust</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">Audio quality affects performance, background noise sensitive</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">When audio quality is very poor or for non-speech audio tasks</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 14: Collaborative Filtering / Two-Tower -->
+                    <div class="algo-detail-card" data-name="collaborative filtering two-tower recommendation" data-goal="recommend" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #6366F1;"><i class="fas fa-star"></i></div>
+                            <div class="algo-card-title">
+                                <h3>Collaborative Filtering / Two-Tower</h3>
+                                <span class="algo-card-tag">Recommendation</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Recommendation systems</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">User-item interactions, ratings, clicks</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">E-commerce, streaming platforms, product suggestions</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Personalized recommendations, scales well, effective</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">Cold-start problem for new users/items</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">When you have no interaction history or very sparse data</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 15: Reinforcement Learning / PPO -->
+                    <div class="algo-detail-card" data-name="reinforcement learning ppo" data-goal="optimize" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #6366F1;"><i class="fas fa-chess"></i></div>
+                            <div class="algo-card-title">
+                                <h3>Reinforcement Learning / PPO</h3>
+                                <span class="algo-card-tag">Recommendation</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Decision-making based on rewards</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Environment states, actions, rewards</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Robotics, dynamic pricing, game agents, policy optimization</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Learns through interaction, adapts to dynamic environments</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">Complex training, data/environment intensive, unstable</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">When you have static data and supervised learning would work</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 16: Graph Neural Network -->
+                    <div class="algo-detail-card" data-name="graph neural network gnn" data-goal="classify predict" data-reveal>
+                        <div class="algo-card-header">
+                            <div class="algo-card-icon" style="--card-color: #14B8A6;"><i class="fas fa-link"></i></div>
+                            <div class="algo-card-title">
+                                <h3>Graph Neural Network</h3>
+                                <span class="algo-card-tag">Graph AI</span>
+                            </div>
+                            <button class="expand-btn"><i class="fas fa-chevron-down"></i></button>
+                        </div>
+                        <div class="algo-card-body">
+                            <div class="algo-card-summary">
+                                <p><strong>Best for:</strong> Connected and relational data</p>
+                            </div>
+                            <div class="algo-card-details">
+                                <div class="detail-row">
+                                    <span class="detail-label">Input Data</span>
+                                    <span class="detail-value">Graphs, networks, node-edge relationships</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Typical Use Cases</span>
+                                    <span class="detail-value">Fraud rings, social networks, supply chains, molecule prediction</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Strengths</span>
+                                    <span class="detail-value highlight-green">Models relationships directly, captures network structure</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Limitations</span>
+                                    <span class="detail-value highlight-red">Complex architecture, harder to scale, specialized setup</span>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">When NOT to use</span>
+                                    <span class="detail-value">When data has no natural graph structure or relationships</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Visual Decision Tree -->
+        <section class="section decision-tree" id="decision-tree">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Interactive Tool</span>
+                    <h2 class="section-title">Visual <span class="gradient-text">Decision Tree</span></h2>
+                    <p class="section-desc">Follow the branches to find your ideal algorithm. Click on each option to navigate the tree.</p>
+                </div>
+
+                <div class="decision-tree-container" id="decisionTreeContainer">
+                    <!-- Level 1: Root Question -->
+                    <div class="tree-level tree-level-1 active" data-level="1">
+                        <div class="tree-question">
+                            <div class="question-icon"><i class="fas fa-question-circle"></i></div>
+                            <h3>What kind of data do you have?</h3>
+                        </div>
+                        <div class="tree-options">
+                            <button class="tree-option" data-next="structured-goal">
+                                <i class="fas fa-table"></i>
+                                <span>Structured Tables</span>
+                            </button>
+                            <button class="tree-option" data-next="timeseries-goal">
+                                <i class="fas fa-clock"></i>
+                                <span>Time Series</span>
+                            </button>
+                            <button class="tree-option" data-next="text-goal">
+                                <i class="fas fa-font"></i>
+                                <span>Text / NLP</span>
+                            </button>
+                            <button class="tree-option" data-next="image-goal">
+                                <i class="fas fa-image"></i>
+                                <span>Images</span>
+                            </button>
+                            <button class="tree-option" data-next="video-goal">
+                                <i class="fas fa-video"></i>
+                                <span>Video</span>
+                            </button>
+                            <button class="tree-option" data-next="audio-goal">
+                                <i class="fas fa-microphone"></i>
+                                <span>Audio / Speech</span>
+                            </button>
+                            <button class="tree-option" data-next="behavior-goal">
+                                <i class="fas fa-mouse-pointer"></i>
+                                <span>Behavior / Interaction</span>
+                            </button>
+                            <button class="tree-option" data-next="graph-goal">
+                                <i class="fas fa-project-diagram"></i>
+                                <span>Graph / Network</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Level 2: Goals for Structured Data -->
+                    <div class="tree-level tree-level-2" data-level="2" id="structured-goal">
+                        <div class="tree-back"><button class="back-btn"><i class="fas fa-arrow-left"></i> Back</button></div>
+                        <div class="tree-question">
+                            <div class="question-icon"><i class="fas fa-table"></i></div>
+                            <h3>Structured Data — What's your goal?</h3>
+                        </div>
+                        <div class="tree-options">
+                            <button class="tree-option" data-result="linear-regression"><i class="fas fa-chart-line"></i><span>Predict a number</span></button>
+                            <button class="tree-option" data-result="xgboost"><i class="fas fa-tags"></i><span>Classify categories</span></button>
+                            <button class="tree-option" data-result="kmeans"><i class="fas fa-object-group"></i><span>Find hidden groups</span></button>
+                            <button class="tree-option" data-result="isolation-forest"><i class="fas fa-exclamation-triangle"></i><span>Detect outliers</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Level 2: Goals for Time Series -->
+                    <div class="tree-level tree-level-2" data-level="2" id="timeseries-goal">
+                        <div class="tree-back"><button class="back-btn"><i class="fas fa-arrow-left"></i> Back</button></div>
+                        <div class="tree-question">
+                            <div class="question-icon"><i class="fas fa-clock"></i></div>
+                            <h3>Time Series — What's your goal?</h3>
+                        </div>
+                        <div class="tree-options">
+                            <button class="tree-option" data-result="lstm"><i class="fas fa-chart-area"></i><span>Forecast with deep learning</span></button>
+                            <button class="tree-option" data-result="prophet"><i class="fas fa-calendar-alt"></i><span>Business forecasting</span></button>
+                            <button class="tree-option" data-result="timesgpt"><i class="fas fa-brain"></i><span>Advanced AI forecasting</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Level 2: Goals for Text -->
+                    <div class="tree-level tree-level-2" data-level="2" id="text-goal">
+                        <div class="tree-back"><button class="back-btn"><i class="fas fa-arrow-left"></i> Back</button></div>
+                        <div class="tree-question">
+                            <div class="question-icon"><i class="fas fa-font"></i></div>
+                            <h3>Text / NLP — What's your goal?</h3>
+                        </div>
+                        <div class="tree-options">
+                            <button class="tree-option" data-result="llm"><i class="fas fa-magic"></i><span>Generate or reason with text</span></button>
+                            <button class="tree-option" data-result="bert"><i class="fas fa-tags"></i><span>Classify or understand text</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Level 2: Goals for Images -->
+                    <div class="tree-level tree-level-2" data-level="2" id="image-goal">
+                        <div class="tree-back"><button class="back-btn"><i class="fas fa-arrow-left"></i> Back</button></div>
+                        <div class="tree-question">
+                            <div class="question-icon"><i class="fas fa-image"></i></div>
+                            <h3>Images — What's your goal?</h3>
+                        </div>
+                        <div class="tree-options">
+                            <button class="tree-option" data-result="vit"><i class="fas fa-eye"></i><span>Classify or understand images</span></button>
+                            <button class="tree-option" data-result="diffusion"><i class="fas fa-paint-brush"></i><span>Generate images</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Level 2: Goals for Video -->
+                    <div class="tree-level tree-level-2" data-level="2" id="video-goal">
+                        <div class="tree-back"><button class="back-btn"><i class="fas fa-arrow-left"></i> Back</button></div>
+                        <div class="tree-question">
+                            <div class="question-icon"><i class="fas fa-video"></i></div>
+                            <h3>Video — What's your goal?</h3>
+                        </div>
+                        <div class="tree-options">
+                            <button class="tree-option" data-result="video-transformer"><i class="fas fa-film"></i><span>Understand video content</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Level 2: Goals for Audio -->
+                    <div class="tree-level tree-level-2" data-level="2" id="audio-goal">
+                        <div class="tree-back"><button class="back-btn"><i class="fas fa-arrow-left"></i> Back</button></div>
+                        <div class="tree-question">
+                            <div class="question-icon"><i class="fas fa-microphone"></i></div>
+                            <h3>Audio — What's your goal?</h3>
+                        </div>
+                        <div class="tree-options">
+                            <button class="tree-option" data-result="whisper"><i class="fas fa-headphones"></i><span>Speech recognition</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Level 2: Goals for Behavior -->
+                    <div class="tree-level tree-level-2" data-level="2" id="behavior-goal">
+                        <div class="tree-back"><button class="back-btn"><i class="fas fa-arrow-left"></i> Back</button></div>
+                        <div class="tree-question">
+                            <div class="question-icon"><i class="fas fa-mouse-pointer"></i></div>
+                            <h3>Behavior Data — What's your goal?</h3>
+                        </div>
+                        <div class="tree-options">
+                            <button class="tree-option" data-result="collaborative-filtering"><i class="fas fa-star"></i><span>Recommend items</span></button>
+                            <button class="tree-option" data-result="reinforcement-learning"><i class="fas fa-chess"></i><span>Optimize decisions</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Level 2: Goals for Graph -->
+                    <div class="tree-level tree-level-2" data-level="2" id="graph-goal">
+                        <div class="tree-back"><button class="back-btn"><i class="fas fa-arrow-left"></i> Back</button></div>
+                        <div class="tree-question">
+                            <div class="question-icon"><i class="fas fa-project-diagram"></i></div>
+                            <h3>Graph Data — What's your goal?</h3>
+                        </div>
+                        <div class="tree-options">
+                            <button class="tree-option" data-result="gnn"><i class="fas fa-link"></i><span>Understand relationships</span></button>
+                        </div>
+                    </div>
+
+                    <!-- Results -->
+                    <div class="tree-results">
+                        <!-- Linear Regression Result -->
+                        <div class="tree-result" id="linear-regression">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #06B6D4;"><i class="fas fa-chart-line"></i></div>
+                                <h3>Linear Regression</h3>
+                                <p class="result-desc">Best for predicting continuous numeric values from structured data.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-table"></i> Structured</span>
+                                    <span class="result-tag"><i class="fas fa-chart-line"></i> Predict</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- XGBoost Result -->
+                        <div class="tree-result" id="xgboost">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #06B6D4;"><i class="fas fa-bolt"></i></div>
+                                <h3>XGBoost / LightGBM</h3>
+                                <p class="result-desc">Powerful gradient boosting for classification and regression on tabular data.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-table"></i> Structured</span>
+                                    <span class="result-tag"><i class="fas fa-tags"></i> Classify</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- K-Means Result -->
+                        <div class="tree-result" id="kmeans">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #06B6D4;"><i class="fas fa-object-group"></i></div>
+                                <h3>K-Means</h3>
+                                <p class="result-desc">Fast clustering algorithm for finding hidden groups in your data.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-table"></i> Structured</span>
+                                    <span class="result-tag"><i class="fas fa-object-group"></i> Cluster</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- Isolation Forest Result -->
+                        <div class="tree-result" id="isolation-forest">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #06B6D4;"><i class="fas fa-shield-alt"></i></div>
+                                <h3>Isolation Forest</h3>
+                                <p class="result-desc">Efficient anomaly detection for identifying outliers in structured data.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-table"></i> Structured</span>
+                                    <span class="result-tag"><i class="fas fa-exclamation-triangle"></i> Detect</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- LSTM Result -->
+                        <div class="tree-result" id="lstm">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #F59E0B;"><i class="fas fa-memory"></i></div>
+                                <h3>LSTM</h3>
+                                <p class="result-desc">Deep learning for sequential patterns and time-series forecasting.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-clock"></i> Time Series</span>
+                                    <span class="result-tag"><i class="fas fa-chart-area"></i> Forecast</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- Prophet Result -->
+                        <div class="tree-result" id="prophet">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #F59E0B;"><i class="fas fa-calendar-alt"></i></div>
+                                <h3>Prophet</h3>
+                                <p class="result-desc">Facebook's forecasting tool for business time series with seasonality.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-clock"></i> Time Series</span>
+                                    <span class="result-tag"><i class="fas fa-calendar-alt"></i> Business</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- TimesGPT Result -->
+                        <div class="tree-result" id="timesgpt">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #F59E0B;"><i class="fas fa-brain"></i></div>
+                                <h3>TimesGPT</h3>
+                                <p class="result-desc">Foundation model for advanced time-series forecasting tasks.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-clock"></i> Time Series</span>
+                                    <span class="result-tag"><i class="fas fa-brain"></i> AI Model</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- LLM Result -->
+                        <div class="tree-result" id="llm">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #10B981;"><i class="fas fa-robot"></i></div>
+                                <h3>GPT / Llama / Gemini</h3>
+                                <p class="result-desc">Large language models for text generation, reasoning, and conversation.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-font"></i> Text</span>
+                                    <span class="result-tag"><i class="fas fa-magic"></i> Generate</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- BERT Result -->
+                        <div class="tree-result" id="bert">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #10B981;"><i class="fas fa-search"></i></div>
+                                <h3>BERT / RoBERTa</h3>
+                                <p class="result-desc">Contextual text understanding for classification and NLP tasks.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-font"></i> Text</span>
+                                    <span class="result-tag"><i class="fas fa-tags"></i> Classify</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- ViT Result -->
+                        <div class="tree-result" id="vit">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #F43F5E;"><i class="fas fa-eye"></i></div>
+                                <h3>Vision Transformer</h3>
+                                <p class="result-desc">State-of-the-art image classification and visual understanding.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-image"></i> Images</span>
+                                    <span class="result-tag"><i class="fas fa-eye"></i> Classify</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- Diffusion Result -->
+                        <div class="tree-result" id="diffusion">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #F43F5E;"><i class="fas fa-paint-brush"></i></div>
+                                <h3>Diffusion Model</h3>
+                                <p class="result-desc">High-quality image generation from text prompts or noise.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-image"></i> Images</span>
+                                    <span class="result-tag"><i class="fas fa-paint-brush"></i> Generate</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- Video Transformer Result -->
+                        <div class="tree-result" id="video-transformer">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #8B5CF6;"><i class="fas fa-film"></i></div>
+                                <h3>Video Transformer</h3>
+                                <p class="result-desc">Advanced video understanding for action recognition and analysis.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-video"></i> Video</span>
+                                    <span class="result-tag"><i class="fas fa-film"></i> Understand</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- Whisper Result -->
+                        <div class="tree-result" id="whisper">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #F97316;"><i class="fas fa-headphones"></i></div>
+                                <h3>Whisper / wav2vec</h3>
+                                <p class="result-desc">Powerful speech recognition and audio understanding models.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-microphone"></i> Audio</span>
+                                    <span class="result-tag"><i class="fas fa-wave-square"></i> Transcribe</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- Collaborative Filtering Result -->
+                        <div class="tree-result" id="collaborative-filtering">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #6366F1;"><i class="fas fa-star"></i></div>
+                                <h3>Collaborative Filtering / Two-Tower</h3>
+                                <p class="result-desc">Personalized recommendation systems based on user behavior.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-mouse-pointer"></i> Behavior</span>
+                                    <span class="result-tag"><i class="fas fa-star"></i> Recommend</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- RL Result -->
+                        <div class="tree-result" id="reinforcement-learning">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #6366F1;"><i class="fas fa-chess"></i></div>
+                                <h3>Reinforcement Learning / PPO</h3>
+                                <p class="result-desc">Learning optimal decisions through environment interaction and rewards.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-mouse-pointer"></i> Behavior</span>
+                                    <span class="result-tag"><i class="fas fa-chess"></i> Optimize</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+
+                        <!-- GNN Result -->
+                        <div class="tree-result" id="gnn">
+                            <div class="result-card">
+                                <div class="result-icon" style="--result-color: #14B8A6;"><i class="fas fa-link"></i></div>
+                                <h3>Graph Neural Network</h3>
+                                <p class="result-desc">Deep learning for connected data and relationship modeling.</p>
+                                <div class="result-meta">
+                                    <span class="result-tag"><i class="fas fa-project-diagram"></i> Graph</span>
+                                    <span class="result-tag"><i class="fas fa-link"></i> Relate</span>
+                                </div>
+                                <button class="restart-btn"><i class="fas fa-redo"></i> Start Over</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Featured Algorithms -->
+        <section class="section featured" id="featured">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Spotlight</span>
+                    <h2 class="section-title">Featured <span class="gradient-text">Algorithm Groups</span></h2>
+                    <p class="section-desc">The most important algorithm families every data scientist should know.</p>
+                </div>
+                <div class="featured-grid">
+                    <div class="featured-card" data-reveal>
+                        <div class="featured-icon" style="--featured-color: #06B6D4;"><i class="fas fa-chart-line"></i></div>
+                        <h3>Regression & Prediction</h3>
+                        <p class="featured-desc">Predict continuous numeric values from input features.</p>
+                        <div class="featured-algos"><strong>Key algorithms:</strong> Linear Regression, XGBoost, LightGBM</div>
+                        <div class="featured-industries"><strong>Industries:</strong> Finance, Retail, Real Estate</div>
+                        <div class="featured-example"><i class="fas fa-lightbulb"></i> Example: Predict house prices based on features</div>
+                    </div>
+
+                    <div class="featured-card" data-reveal>
+                        <div class="featured-icon" style="--featured-color: #06B6D4;"><i class="fas fa-tags"></i></div>
+                        <h3>Classification & Boosting</h3>
+                        <p class="featured-desc">Assign input data to predefined categories or classes.</p>
+                        <div class="featured-algos"><strong>Key algorithms:</strong> XGBoost, LightGBM, BERT</div>
+                        <div class="featured-industries"><strong>Industries:</strong> Banking, Healthcare, Security</div>
+                        <div class="featured-example"><i class="fas fa-lightbulb"></i> Example: Detect fraudulent transactions</div>
+                    </div>
+
+                    <div class="featured-card" data-reveal>
+                        <div class="featured-icon" style="--featured-color: #F59E0B;"><i class="fas fa-object-group"></i></div>
+                        <h3>Clustering & Segmentation</h3>
+                        <p class="featured-desc">Discover natural groupings in data without labels.</p>
+                        <div class="featured-algos"><strong>Key algorithms:</strong> K-Means, DBSCAN, Hierarchical</div>
+                        <div class="featured-industries"><strong>Industries:</strong> Marketing, E-commerce, SaaS</div>
+                        <div class="featured-example"><i class="fas fa-lightbulb"></i> Example: Segment customers by behavior</div>
+                    </div>
+
+                    <div class="featured-card" data-reveal>
+                        <div class="featured-icon" style="--featured-color: #F43F5E;"><i class="fas fa-exclamation-triangle"></i></div>
+                        <h3>Anomaly Detection</h3>
+                        <p class="featured-desc">Identify unusual patterns that deviate from normal behavior.</p>
+                        <div class="featured-algos"><strong>Key algorithms:</strong> Isolation Forest, One-Class SVM</div>
+                        <div class="featured-industries"><strong>Industries:</strong> Cybersecurity, Finance, IoT</div>
+                        <div class="featured-example"><i class="fas fa-lightbulb"></i> Example: Detect network intrusions</div>
+                    </div>
+
+                    <div class="featured-card" data-reveal>
+                        <div class="featured-icon" style="--featured-color: #F59E0B;"><i class="fas fa-chart-area"></i></div>
+                        <h3>Forecasting</h3>
+                        <p class="featured-desc">Predict future values based on historical time-ordered data.</p>
+                        <div class="featured-algos"><strong>Key algorithms:</strong> LSTM, Prophet, TimesGPT</div>
+                        <div class="featured-industries"><strong>Industries:</strong> Supply Chain, Energy, Retail</div>
+                        <div class="featured-example"><i class="fas fa-lightbulb"></i> Example: Forecast monthly demand</div>
+                    </div>
+
+                    <div class="featured-card" data-reveal>
+                        <div class="featured-icon" style="--featured-color: #10B981;"><i class="fas fa-robot"></i></div>
+                        <h3>NLP & LLMs</h3>
+                        <p class="featured-desc">Understand, generate, and reason with human language.</p>
+                        <div class="featured-algos"><strong>Key algorithms:</strong> GPT, Llama, Gemini, BERT</div>
+                        <div class="featured-industries"><strong>Industries:</strong> Tech, Customer Support, Media</div>
+                        <div class="featured-example"><i class="fas fa-lightbulb"></i> Example: Build a conversational chatbot</div>
+                    </div>
+
+                    <div class="featured-card" data-reveal>
+                        <div class="featured-icon" style="--featured-color: #F43F5E;"><i class="fas fa-eye"></i></div>
+                        <h3>Computer Vision</h3>
+                        <p class="featured-desc">Analyze, classify, and generate visual content from images.</p>
+                        <div class="featured-algos"><strong>Key algorithms:</strong> Vision Transformer, Diffusion Models</div>
+                        <div class="featured-industries"><strong>Industries:</strong> Healthcare, Automotive, Retail</div>
+                        <div class="featured-example"><i class="fas fa-lightbulb"></i> Example: Medical image diagnosis</div>
+                    </div>
+
+                    <div class="featured-card" data-reveal>
+                        <div class="featured-icon" style="--featured-color: #F97316;"><i class="fas fa-microphone"></i></div>
+                        <h3>Audio AI</h3>
+                        <p class="featured-desc">Process, transcribe, and understand audio and speech.</p>
+                        <div class="featured-algos"><strong>Key algorithms:</strong> Whisper, wav2vec</div>
+                        <div class="featured-industries"><strong>Industries:</strong> Call Centers, Media, Accessibility</div>
+                        <div class="featured-example"><i class="fas fa-lightbulb"></i> Example: Transcribe call center audio</div>
+                    </div>
+
+                    <div class="featured-card" data-reveal>
+                        <div class="featured-icon" style="--featured-color: #6366F1;"><i class="fas fa-star"></i></div>
+                        <h3>Recommendation Systems</h3>
+                        <p class="featured-desc">Suggest relevant items to users based on preferences.</p>
+                        <div class="featured-algos"><strong>Key algorithms:</strong> Collaborative Filtering, Two-Tower</div>
+                        <div class="featured-industries"><strong>Industries:</strong> E-commerce, Streaming, Social</div>
+                        <div class="featured-example"><i class="fas fa-lightbulb"></i> Example: Product recommendations</div>
+                    </div>
+
+                    <div class="featured-card" data-reveal>
+                        <div class="featured-icon" style="--featured-color: #6366F1;"><i class="fas fa-chess"></i></div>
+                        <h3>Reinforcement Learning</h3>
+                        <p class="featured-desc">Learn optimal actions through trial and error in environments.</p>
+                        <div class="featured-algos"><strong>Key algorithms:</strong> PPO, DQN, A3C</div>
+                        <div class="featured-industries"><strong>Industries:</strong> Robotics, Gaming, Finance</div>
+                        <div class="featured-example"><i class="fas fa-lightbulb"></i> Example: Dynamic pricing optimization</div>
+                    </div>
+
+                    <div class="featured-card" data-reveal>
+                        <div class="featured-icon" style="--featured-color: #14B8A6;"><i class="fas fa-project-diagram"></i></div>
+                        <h3>Graph AI</h3>
+                        <p class="featured-desc">Model relationships and connections in network data.</p>
+                        <div class="featured-algos"><strong>Key algorithms:</strong> GNN, GCN, GraphSAGE</div>
+                        <div class="featured-industries"><strong>Industries:</strong> Fraud, Social Networks, Pharma</div>
+                        <div class="featured-example"><i class="fas fa-lightbulb"></i> Example: Detect fraud rings in networks</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Real-World Use Cases -->
+        <section class="section use-cases" id="use-cases">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Applications</span>
+                    <h2 class="section-title">Real-World <span class="gradient-text">Use Cases</span></h2>
+                    <p class="section-desc">See how each algorithm maps to a practical business problem.</p>
+                </div>
+                <div class="use-cases-grid">
+                    <div class="use-case-card" data-reveal>
+                        <div class="use-case-icon"><i class="fas fa-home"></i></div>
+                        <h4>Predict House Prices</h4>
+                        <p class="use-case-algo"><i class="fas fa-chart-line"></i> Linear Regression / Gradient Boosting</p>
+                        <p class="use-case-desc">Estimate property values based on location, size, and features.</p>
+                    </div>
+                    <div class="use-case-card" data-reveal>
+                        <div class="use-case-icon"><i class="fas fa-shield-alt"></i></div>
+                        <h4>Detect Transaction Fraud</h4>
+                        <p class="use-case-algo"><i class="fas fa-bolt"></i> XGBoost / Isolation Forest</p>
+                        <p class="use-case-desc">Flag suspicious transactions in real-time payment systems.</p>
+                    </div>
+                    <div class="use-case-card" data-reveal>
+                        <div class="use-case-icon"><i class="fas fa-users"></i></div>
+                        <h4>Segment Customers</h4>
+                        <p class="use-case-algo"><i class="fas fa-object-group"></i> K-Means</p>
+                        <p class="use-case-desc">Group customers by behavior for targeted marketing.</p>
+                    </div>
+                    <div class="use-case-card" data-reveal>
+                        <div class="use-case-icon"><i class="fas fa-boxes"></i></div>
+                        <h4>Forecast Monthly Demand</h4>
+                        <p class="use-case-algo"><i class="fas fa-chart-area"></i> Prophet / LSTM / TimesGPT</p>
+                        <p class="use-case-desc">Predict inventory needs and optimize supply chains.</p>
+                    </div>
+                    <div class="use-case-card" data-reveal>
+                        <div class="use-case-icon"><i class="fas fa-comments"></i></div>
+                        <h4>Build a Chatbot</h4>
+                        <p class="use-case-algo"><i class="fas fa-robot"></i> GPT / Llama / Gemini</p>
+                        <p class="use-case-desc">Create conversational AI for customer support.</p>
+                    </div>
+                    <div class="use-case-card" data-reveal>
+                        <div class="use-case-icon"><i class="fas fa-smile"></i></div>
+                        <h4>Classify Customer Sentiment</h4>
+                        <p class="use-case-algo"><i class="fas fa-search"></i> BERT / RoBERTa</p>
+                        <p class="use-case-desc">Analyze reviews and social media for sentiment.</p>
+                    </div>
+                    <div class="use-case-card" data-reveal>
+                        <div class="use-case-icon"><i class="fas fa-camera"></i></div>
+                        <h4>Recognize Products in Images</h4>
+                        <p class="use-case-algo"><i class="fas fa-eye"></i> Vision Transformer</p>
+                        <p class="use-case-desc">Automatically classify and tag product photos.</p>
+                    </div>
+                    <div class="use-case-card" data-reveal>
+                        <div class="use-case-icon"><i class="fas fa-paint-brush"></i></div>
+                        <h4>Generate Marketing Visuals</h4>
+                        <p class="use-case-algo"><i class="fas fa-paint-brush"></i> Diffusion Model</p>
+                        <p class="use-case-desc">Create custom images for campaigns and ads.</p>
+                    </div>
+                    <div class="use-case-card" data-reveal>
+                        <div class="use-case-icon"><i class="fas fa-headphones-alt"></i></div>
+                        <h4>Transcribe Call Center Audio</h4>
+                        <p class="use-case-algo"><i class="fas fa-headphones"></i> Whisper</p>
+                        <p class="use-case-desc">Convert speech to text for quality analysis.</p>
+                    </div>
+                    <div class="use-case-card" data-reveal>
+                        <div class="use-case-icon"><i class="fas fa-shopping-cart"></i></div>
+                        <h4>Recommend Products</h4>
+                        <p class="use-case-algo"><i class="fas fa-star"></i> Collaborative Filtering / Two-Tower</p>
+                        <p class="use-case-desc">Suggest items based on user preferences.</p>
+                    </div>
+                    <div class="use-case-card" data-reveal>
+                        <div class="use-case-icon"><i class="fas fa-cogs"></i></div>
+                        <h4>Optimize Dynamic Pricing</h4>
+                        <p class="use-case-algo"><i class="fas fa-chess"></i> PPO / Reinforcement Learning</p>
+                        <p class="use-case-desc">Automatically adjust prices based on demand.</p>
+                    </div>
+                    <div class="use-case-card" data-reveal>
+                        <div class="use-case-icon"><i class="fas fa-network-wired"></i></div>
+                        <h4>Detect Fraud Rings</h4>
+                        <p class="use-case-algo"><i class="fas fa-link"></i> Graph Neural Network</p>
+                        <p class="use-case-desc">Uncover connected fraud patterns in networks.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 9: Comparison Table -->
+        <section class="section comparison" id="comparison">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Reference</span>
+                    <h2 class="section-title">Algorithm <span class="gradient-text">Comparison Table</span></h2>
+                    <p class="section-desc">Quick side-by-side comparison of all major algorithms.</p>
+                </div>
+                <div class="table-wrapper">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Algorithm</th>
+                                <th>Data Type</th>
+                                                                <th>Main Goal</th>
+                                <th>Best Use Case</th>
+                                <th>Strength</th>
+                                <th>Limitation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-chart-line" style="color:#06B6D4"></i> Linear Regression</span></td>
+                                <td><span class="table-tag structured">Structured</span></td>
+                                <td>Predict</td>
+                                <td>Sales, pricing, demand</td>
+                                <td class="text-green">Simple, fast, interpretable</td>
+                                <td class="text-red">Nonlinear complexity</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-bolt" style="color:#06B6D4"></i> XGBoost / LightGBM</span></td>
+                                <td><span class="table-tag structured">Structured</span></td>
+                                <td>Classify / Predict</td>
+                                <td>Fraud, churn, scoring</td>
+                                <td class="text-green">Powerful, accurate</td>
+                                <td class="text-red">Less interpretable</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-object-group" style="color:#06B6D4"></i> K-Means</span></td>
+                                <td><span class="table-tag structured">Structured</span></td>
+                                <td>Cluster</td>
+                                <td>Customer segmentation</td>
+                                <td class="text-green">Simple, fast</td>
+                                <td class="text-red">Must choose K</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-shield-alt" style="color:#06B6D4"></i> Isolation Forest</span></td>
+                                <td><span class="table-tag structured">Structured</span></td>
+                                <td>Detect</td>
+                                <td>Fraud, anomalies</td>
+                                <td class="text-green">Efficient outlier detection</td>
+                                <td class="text-red">Noise sensitive</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-memory" style="color:#F59E0B"></i> LSTM</span></td>
+                                <td><span class="table-tag timeseries">Time Series</span></td>
+                                <td>Forecast</td>
+                                <td>Sequential patterns</td>
+                                <td class="text-green">Captures temporal deps</td>
+                                <td class="text-red">Complex training</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-calendar-alt" style="color:#F59E0B"></i> Prophet</span></td>
+                                <td><span class="table-tag timeseries">Time Series</span></td>
+                                <td>Forecast</td>
+                                <td>Business seasonality</td>
+                                <td class="text-green">Interpretable, easy</td>
+                                <td class="text-red">Complex sequences</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-brain" style="color:#F59E0B"></i> TimesGPT</span></td>
+                                <td><span class="table-tag timeseries">Time Series</span></td>
+                                <td>Forecast</td>
+                                <td>Advanced forecasting</td>
+                                <td class="text-green">Foundation model power</td>
+                                <td class="text-red">Availability, scale</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-robot" style="color:#10B981"></i> GPT / Llama / Gemini</span></td>
+                                <td><span class="table-tag text">Text</span></td>
+                                <td>Generate</td>
+                                <td>Chatbots, writing, Q&A</td>
+                                <td class="text-green">Flexible, powerful</td>
+                                <td class="text-red">Costly, hallucinates</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-search" style="color:#10B981"></i> BERT / RoBERTa</span></td>
+                                <td><span class="table-tag text">Text</span></td>
+                                <td>Classify</td>
+                                <td>Sentiment, spam, intent</td>
+                                <td class="text-green">Contextual understanding</td>
+                                <td class="text-red">Not for generation</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-eye" style="color:#F43F5E"></i> Vision Transformer</span></td>
+                                <td><span class="table-tag image">Images</span></td>
+                                <td>Classify</td>
+                                <td>Medical imaging, products</td>
+                                <td class="text-green">High-performing vision</td>
+                                <td class="text-red">Needs large data</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-paint-brush" style="color:#F43F5E"></i> Diffusion Model</span></td>
+                                <td><span class="table-tag image">Images</span></td>
+                                <td>Generate</td>
+                                <td>Art, design, synthetic</td>
+                                <td class="text-green">High-quality synthesis</td>
+                                <td class="text-red">Compute expensive</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-film" style="color:#8B5CF6"></i> Video Transformer</span></td>
+                                <td><span class="table-tag video">Video</span></td>
+                                <td>Understand</td>
+                                <td>Action recognition</td>
+                                <td class="text-green">Temporal visual patterns</td>
+                                <td class="text-red">Compute heavy</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-headphones" style="color:#F97316"></i> Whisper / wav2vec</span></td>
+                                <td><span class="table-tag audio">Audio</span></td>
+                                <td>Transcribe</td>
+                                <td>Speech, voice AI</td>
+                                <td class="text-green">Powerful audio tasks</td>
+                                <td class="text-red">Audio quality matters</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-star" style="color:#6366F1"></i> Collaborative Filtering</span></td>
+                                <td><span class="table-tag recommend">Behavior</span></td>
+                                <td>Recommend</td>
+                                <td>E-commerce, streaming</td>
+                                <td class="text-green">Personalized recs</td>
+                                <td class="text-red">Cold-start problem</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-chess" style="color:#6366F1"></i> RL / PPO</span></td>
+                                <td><span class="table-tag recommend">Behavior</span></td>
+                                <td>Optimize</td>
+                                <td>Robotics, pricing, games</td>
+                                <td class="text-green">Learns by interaction</td>
+                                <td class="text-red">Complex, data-heavy</td>
+                            </tr>
+                            <tr>
+                                <td><span class="table-algo"><i class="fas fa-link" style="color:#14B8A6"></i> Graph Neural Network</span></td>
+                                <td><span class="table-tag graph">Graph</span></td>
+                                <td>Relate</td>
+                                <td>Fraud rings, networks</td>
+                                <td class="text-green">Models relationships</td>
+                                <td class="text-red">Complex setup</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 10: Final CTA -->
+        <section class="section cta" id="cta">
+            <div class="container">
+                <div class="cta-content">
+                    <div class="cta-icon"><i class="fas fa-brain"></i></div>
+                    <h2 class="cta-title">The best algorithm depends on<br><span class="gradient-text">your data and your goal.</span></h2>
+                    <p class="cta-desc">Every problem in machine learning has a solution — the art is knowing which tool to pick. Whether you're a beginner exploring the landscape or a professional making architectural decisions, this guide is your compass in the world of ML algorithms.</p>
+                    <p class="cta-quote">"Data is the new oil, but algorithms are the refineries that turn it into insight."</p>
+                    <div class="cta-buttons">
+                        <a href="#hero" class="btn btn-primary"><i class="fas fa-redo"></i> Explore Again</a>
+                        <a href="#" class="btn btn-secondary" onclick="alert('ML Cheat Sheet download coming soon!'); return false;"><i class="fas fa-download"></i> Download ML Cheat Sheet</a>
+                        <a href="#" class="btn btn-outline" onclick="alert('More AI projects coming soon!'); return false;"><i class="fas fa-rocket"></i> View More AI Projects</a>
+                    </div>
+                </div>
+                <div class="cta-footer">
+                    <p>Built for data scientists, analysts, students, and ML enthusiasts.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
